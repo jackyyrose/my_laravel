@@ -4,6 +4,6 @@
         every day a course
     </a>
     <div class="float-right">
-    <a href="/about" >ABOUT</a>
+    <a href="{{route('about')}}" >ABOUT</a>
     </div>
 </footer>
