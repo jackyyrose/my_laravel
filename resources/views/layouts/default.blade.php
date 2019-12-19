@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>@yield('title', 'Weibo App') - Laravel Project</title>
-    <link rel="stylesheet" href="{{mix('css/app.css')}}">
-  </head>
-  <body>
-    @include('layouts._header')
-    <div class="container">
-        <div class="offset-md-1 col-md-10">
-            @yield('content')
-            @include('layouts._footer')
-        </div>
+
+<head>
+  <title>@yield('title', 'Data App') - Laravel Project</title>
+  <link rel="stylesheet" href="{{mix('css/app.css')}}">
+</head>
+
+<body>
+  @include('layouts._header')
+  <div class="container">
+    <div class="offset-md-1 col-md-10">
+      @include('shared._messages')
+      @yield('content')
+      @include('layouts._footer')
     </div>
-  </body>
+  </div>
+</body>
+
 </html>
