@@ -20,7 +20,9 @@ class SessionsController extends Controller
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($credentials)) {
+        //var_dump($credentials);
+        //var_dump($request);die;
+        if (Auth::attempt($credentials, $request->has('remember'))) {
             //success
             session()->flash('success', 'Welcome back!');
             return redirect()->route('users.show', [AUth::user()]);
@@ -32,7 +34,8 @@ class SessionsController extends Controller
 
     }
 
-    public function destroy(){
+    public function destroy()
+    {
         Auth::logout();
         session()->flash('success', 'You successfully logged out!');
         return redirect('login');
