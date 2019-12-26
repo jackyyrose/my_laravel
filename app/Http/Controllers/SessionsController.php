@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 
 class SessionsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('guest', [
+            'only' => ['create'],
+        ]);
+    }
     //
     public function create()
     {
@@ -25,7 +31,9 @@ class SessionsController extends Controller
         if (Auth::attempt($credentials, $request->has('remember'))) {
             //success
             session()->flash('success', 'Welcome back!');
-            return redirect()->route('users.show', [AUth::user()]);
+            // return redirect()->route('users.show', [Auth::user()]);
+            $fallback = route('users.show', Auth::user());
+            return redirect()->intended($fallback);
         } else {
             //fail
             session()->flash('danger', 'Sorry, your email and password do not match!');
