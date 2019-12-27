@@ -1,9 +1,9 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container ">
-        <a class="navbar-brand" href="{{route('home')}}">DATA App</a>
+        <a class="navbar-brand" href="{{route('home')}}">DATA BASE</a>
         <ul class="navbar-nav justify-content-end">
             @if (Auth::check())
-            <li class="nav-item"><a class="nav-link" href="#">User List</a></li>
+            <li class="nav-item"><a class="nav-link" href="{{route('users.index')}}">User List</a></li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                     {{ Auth::user()->name }}
