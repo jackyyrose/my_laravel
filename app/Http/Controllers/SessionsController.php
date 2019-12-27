@@ -29,11 +29,16 @@ class SessionsController extends Controller
         //var_dump($credentials);
         //var_dump($request);die;
         if (Auth::attempt($credentials, $request->has('remember'))) {
-            //success
-            session()->flash('success', 'Welcome back!');
-            // return redirect()->route('users.show', [Auth::user()]);
-            $fallback = route('users.show', Auth::user());
-            return redirect()->intended($fallback);
+            if (Auth::user()->activated) {
+                session()->flash('success', 'Welcome back!');
+                // return redirect()->route('users.show', [Auth::user()]);
+                $fallback = route('users.show', Auth::user());
+                return redirect()->intended($fallback);
+            } else {
+                Auth::logout();
+                session()->flash('warning', '账号未激活，请检查邮箱中的注册邮件');
+                return redirect('/');
+            }
         } else {
             //fail
             session()->flash('danger', 'Sorry, your email and password do not match!');
