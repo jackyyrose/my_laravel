@@ -1,16 +1,21 @@
 @extends('layouts.default')
 @section('title', 'home')
 @section('content')
-    <div class="jumbotron">
-        <h1>Hello Laravel</h1>
-        <p class="lead">
-        你现在所看到的是 <a href="#">APP</a>
-        </p>
-        <p>
-        一切，将从这里开始。
-        </p>
-        <p>
-        <a class="btn btn-lg btn-success" href="{{route('signup')}}" role="button">现在注册</a>
-        </p>
-    </div>
+@if (session('status'))
+<div class="alert alert-success">
+    {{session('status')}}
+</div>
+@endif
+<div class="jumbotron">
+    <h1>Hello Laravel</h1>
+    <p class="lead">
+        Now what u see is <a href="#">APP</a>
+    </p>
+    <p>
+        All start from here。
+    </p>
+    <p>
+        <a class="btn btn-lg btn-success" href="{{route('signup')}}" role="button">Now Sign Up</a>
+    </p>
+</div>
 @stop
