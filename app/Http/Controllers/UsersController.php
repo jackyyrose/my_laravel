@@ -114,4 +114,18 @@ class UsersController extends Controller
         session()->flash('success', 'Congrats, 激活成功');
         return redirect()->route('users.show', [$user]);
     }
+
+    public function followings(User $user)
+    {
+        $users = $user->followings()->paginate(30);
+        $title = $user->name . '关注的人';
+        return view('users.show_follow', compact('users', 'title'));
+    }
+
+    public function followers(User $user)
+    {
+        $users = $user->followers()->paginate(30);
+        $title = $user->name . '的Fans';
+        return view('users.show_follow', compact('users', 'title'));
+    }
 }
