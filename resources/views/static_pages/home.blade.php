@@ -15,7 +15,7 @@
         All start from here。
     </p>
     <p>
-        <a class="btn btn-lg btn-success" href="{{route('signup')}}" role="button">Now Sign Up</a>
+        Now <a class="btn btn-lg btn-success" href="{{route('signup')}}" role="button">Sign Up</a>
     </p>
 </div>
 @stop
