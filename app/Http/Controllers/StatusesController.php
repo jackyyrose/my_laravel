@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,14 @@ class StatusesController extends Controller
             'content' => $request['content'],
         ]);
         session()->flash('success', 'Successfully Post!');
+        return redirect()->back();
+    }
+
+    public function destroy(Status $status)
+    {
+        $this->authorize('destroy', $status);
+        $status->delete();
+        session()->flash('success', 'one blog been deleted!');
         return redirect()->back();
     }
 }
