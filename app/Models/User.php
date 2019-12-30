@@ -84,7 +84,7 @@ class User extends Authenticatable
         //前已关注用户的关注关系，因此不能对其进行移除，
     }
 
-    public function unfollow($user_id)
+    public function unfollow($user_ids)
     {
         if (!is_array($user_ids)) {
             $user_ids = compact('user_ids');
